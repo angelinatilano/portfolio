@@ -12,8 +12,6 @@ function initDashboardOnOpen() {
 
     const teal = '#006555';
     const orange = '#F3946B';
-    const gold = '#F7BB67';
-    const blue = '#6BB3C0';
     const bodyText = '#4B5D58';
     const gridLine = 'rgba(211,190,163,0.35)';
 
@@ -69,47 +67,6 @@ function initDashboardOnOpen() {
         }
         lineChart.update();
       });
-    });
-
-    new Chart(document.getElementById('dashBarChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['Image', 'Article', 'Poll', 'Video', 'Text-only'],
-        datasets: [{
-          data: [14.2, 11.8, 19.6, 16.4, 8.1],
-          backgroundColor: [teal, teal, orange, teal, teal],
-          borderRadius: 6,
-          maxBarThickness: 40
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: bodyText, font: { family: 'Manrope', size: 11 } } },
-          y: { grid: { color: gridLine }, ticks: { color: bodyText, font: { family: 'Manrope', size: 11 }, callback: v => v + '%' } }
-        }
-      }
-    });
-
-    new Chart(document.getElementById('dashDoughnutChart').getContext('2d'), {
-      type: 'doughnut',
-      data: {
-        labels: ['Image', 'Article', 'Poll', 'Video', 'Text-only'],
-        datasets: [{
-          data: [35, 20, 15, 20, 10],
-          backgroundColor: [teal, blue, orange, gold, '#D3BEA3'],
-          borderWidth: 2,
-          borderColor: '#FFFFFF'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'bottom', labels: { color: bodyText, font: { family: 'Manrope', size: 11 }, boxWidth: 12, padding: 12 } }
-        },
-        cutout: '62%'
-      }
     });
   };
 

@@ -601,11 +601,7 @@ img { max-width: 100%; }
   transition: background .15s, color .15s;
 }
 .dash-toggle-btn.active { background: var(--ink); color: var(--cream); }
-.dash-two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
 .dash canvas { max-height: 300px; }
-@media (max-width: 760px) {
-  .dash-two-col { grid-template-columns: 1fr; }
-}
 
 .detail-blocks { display: grid; gap: 40px; }
 .detail-blocks .block-label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); font-weight: 700; }
