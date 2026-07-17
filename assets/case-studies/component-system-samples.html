@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Component Samples — Illustrative Demo</title>
+<style>body{margin:0;background:#ffffff;}</style>
+</head>
+<body>
+<!--
+  SAMPLE COMPONENTS — Illustrative only.
+  All names, quotes, companies, and Q&A content below are fictional placeholders
+  written for demonstration purposes. They are not real client testimonials,
+  not real FAQ content, and not affiliated with any actual company.
+-->
+
+<!-- ============================================================ -->
+<!-- SAMPLE 1: FAQ ACCORDION -->
+<!-- ============================================================ -->
+<div style="max-width:1200px;margin:0 auto;padding:48px 20px;font-family:Arial,sans-serif;font-size:16px;color:#3c3c3c;">
+
+  <h2 style="font-family:Georgia,serif;font-size:36px;font-weight:700;color:#1a3a5c;margin:0 0 2.5rem;text-align:center;">Frequently Asked Questions</h2>
+  <p style="text-align:center;font-size:13px;color:#8a8a8a;margin:-1.5rem 0 2rem;">Sample content for demonstration only — not real Q&amp;A.</p>
+
+  <style>
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+    .faq-item{background:#ffffff;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;transition:border-color 0.2s;}
+    .faq-item.open{border-color:#1a3a5c;}
+    .faq-trigger{width:100%;background:none;border:none;outline:none;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:20px;}
+    .faq-trigger:focus-visible{outline:2px solid #1a3a5c;outline-offset:-2px;border-radius:8px;}
+    .faq-q{font-size:20px;font-weight:700;color:#1a3a5c;margin:0;line-height:1.4;}
+    .faq-chevron{flex-shrink:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center;transition:transform 0.25s ease;}
+    .faq-item.open .faq-chevron{transform:rotate(180deg);}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+    .faq-answer-inner{font-size:18px;color:#3c3c3c;line-height:1.85;padding:0 2rem 2rem;}
+    .faq-divider{height:1px;background:#e0e0e0;margin:0 2rem 1.5rem;}
+    .faq-item.open .faq-answer{max-height:800px;}
+    @media(max-width:680px){
+      .faq-grid{grid-template-columns:1fr;}
+      .faq-trigger{padding:1.25rem 1.5rem;}
+      .faq-answer-inner{padding:0 1.5rem 1.5rem;font-size:17px;}
+      .faq-divider{margin:0 1.5rem 1.25rem;}
+      .faq-q{font-size:18px;}
+    }
+  </style>
+
+  <div class="faq-grid">
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-q">How long does onboarding typically take?</span>
+        <span class="faq-chevron" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-divider"></div>
+        <p class="faq-answer-inner">Sample answer text. This would describe the typical onboarding timeline and process in a real deployment.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-q">What sizes of engagement do you support?</span>
+        <span class="faq-chevron" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-divider"></div>
+        <p class="faq-answer-inner">Sample answer text. This is placeholder copy standing in for a real response.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-q">Is reporting customizable?</span>
+        <span class="faq-chevron" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-divider"></div>
+        <p class="faq-answer-inner">Sample answer text, illustrating a second row and how the grid wraps.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-trigger" aria-expanded="false">
+        <span class="faq-q">Who do we contact for support?</span>
+        <span class="faq-chevron" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="#1a3a5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="faq-answer" role="region">
+        <div class="faq-divider"></div>
+        <p class="faq-answer-inner">Sample answer text, completing the demo grid.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.faq-trigger').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var item=this.closest('.faq-item');
+        var isOpen=item.classList.contains('open');
+        item.classList.toggle('open',!isOpen);
+        this.setAttribute('aria-expanded',!isOpen);
+      });
+    });
+  </script>
+
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SAMPLE 2: AUTO-SCROLLING TESTIMONIAL MARQUEE -->
+<!-- ============================================================ -->
+<div id="sample-marquee" style="background:#f9f9f9;padding:64px 0;font-family:Arial,sans-serif;">
+  <div style="max-width:1110px;margin:0 auto;padding:0 24px;">
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:40px;text-align:left;">
+      <div style="flex:1 1 auto;">
+        <h2 style="font-family:Georgia,serif;font-size:32px;font-weight:700;color:#1a3a5c;margin:0 0 12px;">What Clients Say</h2>
+        <p style="font-size:16px;color:#3c3c3c;max-width:620px;margin:0;line-height:1.6;">Sample testimonials for demonstration only — not real client feedback.</p>
+      </div>
+      <button id="marquee-playpause" aria-label="Pause testimonial scrolling" aria-pressed="false"
+        style="flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #1a3a5c;color:#1a3a5c;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:4px;">❙❙</button>
+    </div>
+
+    <div id="marquee-track" role="region" aria-label="Client testimonials, auto-scrolling. Use left and right arrow keys, or drag, to scroll manually." tabindex="0"
+      style="display:flex;gap:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;cursor:grab;scrollbar-width:none;padding:4px 24px 16px;margin:0 -24px;"></div>
+  </div>
+</div>
+
+<style>
+  #marquee-track::-webkit-scrollbar{display:none;}
+  #marquee-track.dragging{cursor:grabbing;}
+  .marquee-card{flex:0 0 340px;box-sizing:border-box;background:#fff;border-radius:10px;border:1px solid #f0f0f0;padding:28px;text-align:left;user-select:none;}
+  .marquee-name{display:block;font-size:16px;font-weight:700;color:#1a3a5c;}
+  .marquee-title{display:block;font-size:13px;font-weight:400;color:#3c3c3c;margin-top:3px;}
+  .marquee-quote{font-size:16px;color:#3c3c3c;line-height:1.6;margin:0 0 18px;}
+  .marquee-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1a3a5c;background:#f9f9f9;border-radius:20px;padding:6px 14px;}
+  @media (max-width:640px){
+    .marquee-card{flex-basis:85vw;scroll-snap-align:center;}
+    #marquee-playpause{display:none;}
+    #marquee-track{scroll-snap-type:x mandatory;}
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // FICTIONAL sample data — for demonstration only.
+  var sampleTestimonials = [
+    { quote: "Placeholder quote text standing in for a real testimonial about responsiveness and communication.", name: "J. Rivera", title: "Sample Title", tag: "Communication" },
+    { quote: "Placeholder quote text illustrating a second card in the loop.", name: "A. Chen", title: "Sample Title", tag: "Reliability" },
+    { quote: "Placeholder quote text showing how longer copy wraps within the card.", name: "M. Osei", title: "Sample Title", tag: "Process" },
+    { quote: "Placeholder quote text for a fourth fictional example.", name: "R. Novak", title: "Sample Title", tag: "Support" },
+    { quote: "Placeholder quote text completing the demo set.", name: "T. Alvarez", title: "Sample Title", tag: "Onboarding" }
+  ];
+
+  var track = document.getElementById('marquee-track');
+  var playPauseBtn = document.getElementById('marquee-playpause');
+  var block = document.getElementById('sample-marquee');
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isNarrowScreen = window.innerWidth <= 640;
+
+  function buildCard(t) {
+    var card = document.createElement('div');
+    card.className = 'marquee-card';
+
+    var header = document.createElement('div');
+    var nameEl = document.createElement('span');
+    nameEl.className = 'marquee-name';
+    nameEl.innerText = t.name;
+    header.appendChild(nameEl);
+
+    var titleEl = document.createElement('span');
+    titleEl.className = 'marquee-title';
+    titleEl.innerText = t.title;
+    header.appendChild(titleEl);
+
+    card.appendChild(header);
+
+    var quote = document.createElement('p');
+    quote.className = 'marquee-quote';
+    quote.style.marginTop = '16px';
+    quote.innerText = '\u201C' + t.quote + '\u201D';
+    card.appendChild(quote);
+
+    var tag = document.createElement('span');
+    tag.className = 'marquee-tag';
+    tag.innerText = t.tag;
+    card.appendChild(tag);
+
+    return card;
+  }
+
+  for (var copy = 0; copy < 3; copy++) {
+    sampleTestimonials.forEach(function(t) { track.appendChild(buildCard(t)); });
+  }
+
+  var singleSetWidth = 0;
+  var position = 0;
+
+  function measureAndInit() {
+    singleSetWidth = track.scrollWidth / 3;
+    track.scrollLeft = singleSetWidth;
+    position = singleSetWidth;
+  }
+  measureAndInit();
+  window.addEventListener('resize', measureAndInit);
+
+  track.addEventListener('scroll', function() {
+    if (isNarrowScreen || singleSetWidth <= 0) return;
+    if (track.scrollLeft >= singleSetWidth * 2) {
+      track.scrollLeft -= singleSetWidth;
+      position -= singleSetWidth;
+    } else if (track.scrollLeft <= 0) {
+      track.scrollLeft += singleSetWidth;
+      position += singleSetWidth;
+    }
+  });
+
+  var speed = 0.35;
+  var rafId = null;
+  var playing = true;
+
+  function step() {
+    position += speed;
+    track.scrollLeft = Math.round(position);
+    rafId = requestAnimationFrame(step);
+  }
+  function startAutoplay() {
+    if (prefersReducedMotion || rafId) return;
+    position = track.scrollLeft;
+    rafId = requestAnimationFrame(step);
+  }
+  function stopAutoplay() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  }
+  function setPlaying(p) {
+    playing = p;
+    if (playing) {
+      startAutoplay();
+      playPauseBtn.innerText = '❙❙';
+      playPauseBtn.setAttribute('aria-label', 'Pause testimonial scrolling');
+      playPauseBtn.setAttribute('aria-pressed', 'false');
+    } else {
+      stopAutoplay();
+      playPauseBtn.innerText = '▶';
+      playPauseBtn.setAttribute('aria-label', 'Resume testimonial scrolling');
+      playPauseBtn.setAttribute('aria-pressed', 'true');
+    }
+  }
+
+  playPauseBtn.addEventListener('click', function() { setPlaying(!playing); });
+  block.addEventListener('mouseenter', stopAutoplay);
+  block.addEventListener('mouseleave', function() { if (playing) startAutoplay(); });
+  track.addEventListener('focusin', stopAutoplay);
+  track.addEventListener('focusout', function() { if (playing) startAutoplay(); });
+
+  var isDragging = false, dragStartX = 0, dragStartScroll = 0;
+  track.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    track.classList.add('dragging');
+    dragStartX = e.pageX;
+    dragStartScroll = track.scrollLeft;
+    stopAutoplay();
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    track.scrollLeft = dragStartScroll - (e.pageX - dragStartX);
+    position = track.scrollLeft;
+  });
+  window.addEventListener('mouseup', function() {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    if (playing) startAutoplay();
+  });
+
+  track.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') { track.scrollLeft += 364; position = track.scrollLeft; e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { track.scrollLeft -= 364; position = track.scrollLeft; e.preventDefault(); }
+  });
+
+  if (prefersReducedMotion || isNarrowScreen) { setPlaying(false); } else { startAutoplay(); }
+});
+</script>
+</body>
+</html>
