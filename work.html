@@ -187,8 +187,54 @@
     <div><span class="block-label">The Approach</span><p>Took over the account with a defined strategy: consistent posting cadence, content pillars matched to the audience, copy written to drive engagement. Built an interactive dashboard alongside it, a visual tool that made the data legible to non-technical stakeholders. Every post measured, every decision documented.</p></div>
     <div class="detail-outcome"><span class="block-label">The Outcome</span><p>6.41% → 17.7% engagement in 30 days, 8x industry average, achieved on an inherited account with no paid amplification. The dashboard became the artifact that made the case to leadership.</p></div>
   </div>
-  <div class="embed-frame"><iframe src="assets/case-studies/linkedin-engagement-dashboard.html" title="LinkedIn engagement dashboard demo" loading="lazy"></iframe></div>
-  <p class="embed-note">Live dashboard above — illustrative data matching the growth story described.</p>
+  <div class="dash">
+    <p class="dash-disclaimer">Sample dashboard for portfolio demonstration. Data shown is illustrative, not a real account's actual performance metrics.</p>
+
+    <div class="dash-stat-row">
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Engagement Rate</div>
+        <div class="dash-stat-value">17.7%</div>
+        <div class="dash-stat-sub">↑ from 6.41%</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">vs. Industry Avg (~2%)</div>
+        <div class="dash-stat-value">8.9x</div>
+        <div class="dash-stat-sub">above benchmark</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Follower Growth</div>
+        <div class="dash-stat-value">+412</div>
+        <div class="dash-stat-sub">↑ 30 days</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Posts Published</div>
+        <div class="dash-stat-value">18</div>
+        <div class="dash-stat-sub">consistent cadence</div>
+      </div>
+    </div>
+
+    <div class="dash-panel">
+      <div class="dash-panel-header">
+        <span class="dash-panel-title">Engagement Rate Over Time</span>
+        <div class="dash-toggle-group">
+          <button class="dash-toggle-btn active" data-dash-metric="engagement">Engagement Rate</button>
+          <button class="dash-toggle-btn" data-dash-metric="followers">Follower Growth</button>
+        </div>
+      </div>
+      <canvas id="dashLineChart"></canvas>
+    </div>
+
+    <div class="dash-two-col">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><span class="dash-panel-title">Engagement by Post Type</span></div>
+        <canvas id="dashBarChart"></canvas>
+      </div>
+      <div class="dash-panel">
+        <div class="dash-panel-header"><span class="dash-panel-title">Content Mix</span></div>
+        <canvas id="dashDoughnutChart"></canvas>
+      </div>
+    </div>
+  </div>
   <div class="tag-row"><span>Social Strategy</span><span>Data Visualization</span><span>Content Design</span></div>
 </article>
 
@@ -242,9 +288,12 @@
   <p class="footer-copy">© 2026 · Marketing Operations &amp; Digital Coordinator, Kaufman Rossin</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
 <script>
   initDetailToggle();
+  initDashboardOnOpen();
 </script>
 </body>
 </html>
