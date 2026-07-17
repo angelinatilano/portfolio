@@ -517,7 +517,7 @@ img { max-width: 100%; }
 
 /* ---------- Native dashboard (LinkedIn case study) ---------- */
 .dash {
-  margin: 0 0 12px;
+  margin: 40px 0 12px;
 }
 .dash-disclaimer {
   font-size: 13px;
