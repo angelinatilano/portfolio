@@ -18,7 +18,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initPortraitParallax();
   initNavToggle();
+  initScrollChrome();
 });
+
+// Scroll progress bar + condensed nav state, driven from one rAF-throttled listener
+function initScrollChrome() {
+  const nav = document.querySelector('.nav');
+  const bar = document.querySelector('[data-scroll-progress]');
+  if (!nav && !bar) return;
+
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const y = window.scrollY;
+
+    if (nav) nav.classList.toggle('is-scrolled', y > 12);
+
+    if (bar) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
+    }
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+}
 
 // Portrait scroll parallax — image drifts vertically as the About section scrolls through view
 function initPortraitParallax() {
