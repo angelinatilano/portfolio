@@ -701,6 +701,7 @@ button.think-card {
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
+button.case-card { padding: 0; }
 button.case-card { border: 1px solid var(--border); }
 
 button.case-card:focus-visible,
