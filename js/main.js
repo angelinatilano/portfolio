@@ -16,21 +16,58 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => revealEls.forEach((el) => el.classList.add('is-visible')), 1800);
   }
 
-  // Portrait tilt-on-hover
+  initPortraitParallax();
+  initNavToggle();
+});
+
+// Portrait scroll parallax — image drifts vertically as the About section scrolls through view
+function initPortraitParallax() {
   const portraitWrap = document.querySelector('[data-tilt-wrap]');
   const portrait = document.querySelector('[data-tilt]');
-  if (portraitWrap && portrait) {
-    portraitWrap.addEventListener('mousemove', (e) => {
-      const rect = portraitWrap.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      portrait.style.transform = `translate(${px * 8}px, ${py * 8}px)`;
-    });
-    portraitWrap.addEventListener('mouseleave', () => {
-      portrait.style.transform = 'translate(0px, 0px)';
-    });
-  }
-});
+  if (!portraitWrap || !portrait) return;
+
+  const maxShift = 26;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const rect = portraitWrap.getBoundingClientRect();
+    const viewportCenter = window.innerHeight / 2;
+    const elementCenter = rect.top + rect.height / 2;
+    const progress = Math.max(-1, Math.min(1, (elementCenter - viewportCenter) / (window.innerHeight / 2)));
+    portrait.style.transform = `translateY(${progress * maxShift}px)`;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+}
+
+// Mobile nav hamburger toggle
+function initNavToggle() {
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const links = document.querySelector('[data-nav-links]');
+  if (!toggle || !links) return;
+
+  const setOpen = (open) => {
+    toggle.classList.toggle('is-open', open);
+    links.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+
+  toggle.addEventListener('click', () => setOpen(!links.classList.contains('is-open')));
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+}
 
 // Generic list <-> detail toggler used on Thinking and Work pages.
 // Expects: [data-open-detail="ID"] triggers, [data-grid-view], [data-detail="ID"], [data-close-detail]
