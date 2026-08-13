@@ -116,6 +116,13 @@ img { max-width: 100%; }
   box-shadow: 0 1px 20px rgba(30,46,41,0.05);
 }
 
+/* Without backdrop blur the translucent bar lets content read straight through,
+   which makes the nav look like it's floating. Fall back to a solid fill. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav { background: rgba(251,247,241,0.98); }
+  .nav.is-scrolled { background: var(--cream); }
+}
+
 .nav-brand {
   display: flex;
   align-items: center;
@@ -205,7 +212,20 @@ img { max-width: 100%; }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 760px) {
-  .nav, .nav.is-scrolled { padding: 14px 20px; flex-wrap: wrap; }
+  /* On phones the bar reads as a solid surface rather than a translucent pill, and
+     its padding absorbs the iOS status-bar inset so no content shows above it. */
+  .nav, .nav.is-scrolled {
+    padding: 14px 20px;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+    padding-left: calc(20px + env(safe-area-inset-left, 0px));
+    padding-right: calc(20px + env(safe-area-inset-right, 0px));
+    flex-wrap: wrap;
+    background: rgba(251,247,241,0.97);
+  }
+  .nav.is-scrolled { background: var(--cream); }
+  /* Menu open covers the viewport edge-to-edge, so it must be fully opaque */
+  .nav:has(.nav-links.is-open) { background: var(--cream); }
+  .scroll-progress { top: env(safe-area-inset-top, 0px); }
   .nav-brand span { font-size: 17px; }
   .nav-toggle { display: flex; }
   .nav-links {
