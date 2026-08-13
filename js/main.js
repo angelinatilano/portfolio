@@ -109,16 +109,23 @@ function initDetailToggle() {
   const details = document.querySelectorAll('[data-detail]');
   const openers = document.querySelectorAll('[data-open-detail]');
   const closers = document.querySelectorAll('[data-close-detail]');
+  if (!details.length) return;
 
-  const openDetail = (id) => {
+  const ids = new Set(Array.from(details).map((d) => d.dataset.detail));
+
+  // updateHash keeps the URL in sync so a detail can be deep-linked (e.g. work.html#leashes-in-motion)
+  const openDetail = (id, updateHash = true) => {
+    if (!ids.has(id)) return;
     if (gridView) gridView.classList.add('is-hidden');
     details.forEach((d) => d.classList.toggle('is-open', d.dataset.detail === id));
+    if (updateHash) history.replaceState(null, '', '#' + id);
     window.scrollTo(0, 0);
   };
 
   const closeDetail = () => {
     details.forEach((d) => d.classList.remove('is-open'));
     if (gridView) gridView.classList.remove('is-hidden');
+    history.replaceState(null, '', location.pathname + location.search);
     window.scrollTo(0, 0);
   };
 
@@ -128,6 +135,10 @@ function initDetailToggle() {
   closers.forEach((el) => {
     el.addEventListener('click', closeDetail);
   });
+
+  // Deep link: if arriving with a matching hash (e.g. from a home-page case card), open that detail
+  const initial = location.hash.slice(1);
+  if (initial) openDetail(initial, false);
 }
 
 // Comment form (client-side only, matches original in-memory behavior)

@@ -71,4 +71,9 @@ function initDashboardOnOpen() {
   };
 
   opener.addEventListener('click', () => requestAnimationFrame(() => requestAnimationFrame(build)));
+
+  // If the page loads deep-linked straight to this case (e.g. work.html#linkedin-dashboard), build now
+  if (location.hash.slice(1) === 'linkedin-dashboard') {
+    requestAnimationFrame(() => requestAnimationFrame(build));
+  }
 }
